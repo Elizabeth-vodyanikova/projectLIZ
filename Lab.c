@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <wchar.h> // для использования функций работы с широкими символами
 #include "LAB.h"
  #define YES 1   
 #define NO 0  
@@ -129,11 +128,14 @@ return 0;
     return 0;
 }
 
+#define YES 1
+#define NO 0
+           
 
-            int Lr5()
- {
+           int Lr5()
 
-    wint_t c;
+          {
+    int c;
     int flag = NO;
     int cnt = 0;
     int vowelsCount = 0;
@@ -141,27 +143,27 @@ return 0;
 
     printf("Введите слова (для завершения ввода нажмите Enter):\n");
 
-    while ((c = getwchar()) != EOF) {
-        if (c == L'\n' && enteredWords == YES) {
+    while ((c = getchar()) != EOF) {
+        if (c == '\n' && enteredWords == YES) {
             break; // Завершаем ввод, если введено хотя бы одно слово и нажата клавиша Enter
         }
 
-        if (c == L' ' || c == L'\n') {
+        if (c == ' ' || c == '\n') {
             enteredWords = YES; // Устанавливаем флаг, если введено хотя бы одно слово
         }
 
-        if ((c == L'a' ||  c == L'e' ||  c == L'i' ||  c == L'o' ||  c == L'u' ||  c == L'y' || 
-             c == L'А' ||  c == L'E' ||  c == L'I' ||  c == L'О' || c == L'U' ||  c == L'Y'  ) && flag == NO) {
+        if ((c == 'a' ||  c == 'e' ||  c == 'i' ||  c == 'o' ||  c == 'u' ||  c == 'y' || 
+             c == 'A' ||  c == 'E' ||  c == 'I' ||  c == 'O' || c == 'U' ||  c == 'Y'  ) && flag == NO) {
             flag = YES;
             vowelsCount = 1;
-        } else if (flag == YES && (c == L' ' || c == L'\n')) {
+        } else if (flag == YES && (c == ' ' || c == '\n')) {
             if (vowelsCount > 2) {
                 cnt++;
             }
             flag = NO;
             vowelsCount = 0;
-        } else if (flag == YES && (c == L'a' || c == L'e' || c == L'i' || c == L'o' || c == L'u' || c == L'y' || 
-                                   c == L'A' || c == L'E' || c == L'I' || c == L'O' || c == L'U' ||c == L'Y' )) {
+        } else if (flag == YES && (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' || c == 'y' || 
+                                   c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U' ||c == 'Y' )) {
             vowelsCount++;
         }
     }
@@ -170,6 +172,7 @@ return 0;
 
     return 0;
 }
+
  
 #define SIZE 10
 
@@ -195,7 +198,7 @@ return 0;
                     return 1;
                 }
 
-                // Делни отрицыательные на максимальон
+                // Делим отрицательные на максимальное
                 for (int i = 0; i < SIZE; i++)
                 {
                     if (mas[i] < 0)
