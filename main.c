@@ -8,6 +8,7 @@ int main()
     
     int a;
     printf("номер необходимой лабы :\n");
+
     scanf("%d",&a);
 
     switch(a)

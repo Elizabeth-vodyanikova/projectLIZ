@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <wchar.h> // для использования функций работы с широкими символами
 #include "LAB.h"
  #define YES 1   
 #define NO 0  
@@ -72,7 +73,7 @@ return 0;
     sign = 1; 
     c = 2; 
     b = 1; 
-    epsilon = 2,7; 
+    epsilon = 2.7; 
  
     for (i = 1; i < n; i++)   
     {  
@@ -169,47 +170,59 @@ return 0;
 
     return 0;
 }
-            int lr6()
-            #define SIZE 10
-{
-    int mas[SIZE];
-    int max = 0;
-    
-    for(int i=0; i<SIZE;i++)
-    {
-        scanf("%d", &mas[i]);
-    }
-    
-    
-    for( int i = 0; i < SIZE; i++ )
-{
-        if (mas [i] > max)
-        { 
-        max = mas[i];
-        }
- for( int i = 0; i < SIZE; i++ )
- {
+ 
+#define SIZE 10
 
-        if (mas [i] < 0)
-        { 
-        mas[i] = mas [i]/max;
-        }
-}
+            int Lr6()
+            {
+                int mas[SIZE];
+                int max = 0;
 
-   printf("%d ", mas[i]);
-printf("\n");     
-}
+                // Ввод данных
+                for (int i = 0; i < SIZE; i++)
+                {
+                    scanf("%d", &mas[i]);
+                    if (i == 0 || mas[i] > max) // Находим масимальное
+                    {
+                        max = mas[i];
+                    }
+                }
 
-return 0;
-}
+                // Проверка на 0
+                if (max == 0)
+                {
+                    printf("Максимальное значние 0 . Деление на 0 запрещено.\n");
+                    return 1;
+                }
 
+                // Делни отрицыательные на максимальон
+                for (int i = 0; i < SIZE; i++)
+                {
+                    if (mas[i] < 0)
+                    {
+                        mas[i] /= max; 
+                    }
+                }
 
+                // печатаем результат
+                for (int i = 0; i < SIZE; i++)
+                {
+                    printf("%d ", mas[i]);
+                }
+                printf("\n");
 
-            int lr7() 
+                return 0;
+            }
+
 #define K 3 
 #define N 4
+
+            int Lr7() 
 {
-    int x[K][N]; 
+
+
+
+                int x[K][N]; 
     int i, j;
     int maxsum, minsum; // Максимальная и минимальная сумма
     int maxindex, minindex; // индексы этих строк
@@ -304,4 +317,5 @@ int Lr8()
     mask = mask << 1; //сдвигаем маску влево на 1 бит
   }
   printf("result: %x", result);
+  return 0;
 }
